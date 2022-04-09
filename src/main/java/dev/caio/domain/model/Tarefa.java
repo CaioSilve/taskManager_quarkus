@@ -3,13 +3,21 @@ package dev.caio.domain.model;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-public class Tarefa extends PanacheEntity{
+public class Tarefa extends PanacheEntityBase {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long id;
 
 	public String titulo;
 	public String descricao;
@@ -19,7 +27,7 @@ public class Tarefa extends PanacheEntity{
 	@ManyToOne
 	@JoinColumn(name = "idDepartamento", nullable = false)
 	public Departamento depar;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idPessoa", nullable = true)
 	public Pessoa pessoa;
 	

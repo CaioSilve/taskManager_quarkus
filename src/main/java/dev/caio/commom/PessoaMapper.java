@@ -12,7 +12,9 @@ import dev.caio.rest.output.PessoaDTO;
 @Mapper(config = MappingConfig.class)
 public interface PessoaMapper {
 	
+	@Mapping(target = "id", source = "pessoa.id")
 	@Mapping(target = "depar", source = "depar.titulo")
+	@Mapping(target = "horasGastas", qualifiedByName = "horasGastas")
 	PessoaDTO toResource(Pessoa pessoa);
 	
 	@Mapping(target = "depar.id", source = "depar")

@@ -2,12 +2,16 @@ INSERT INTO Departamento (id, titulo) VALUES (1, 'Financeiro');
 INSERT INTO Departamento (id, titulo) VALUES (2, 'Comercial');
 INSERT INTO Departamento (id, titulo) VALUES (3, 'Desenvolvimento');
 
+ALTER SEQUENCE departamento_id_seq RESTART WITH 4;
+
 INSERT INTO Pessoa (id, nome, idDepartamento) VALUES (1, 'Camila', 1);
 INSERT INTO Pessoa (id, nome, idDepartamento) VALUES (2, 'Pedro', 2);
 INSERT INTO Pessoa (id, nome, idDepartamento) VALUES (3, 'Fabiano', 3);
 INSERT INTO Pessoa (id, nome, idDepartamento) VALUES (4, 'Raquel', 3);
 INSERT INTO Pessoa (id, nome, idDepartamento) VALUES (5, 'Patricia', 3);
 INSERT INTO Pessoa (id, nome, idDepartamento) VALUES (6, 'Joaquim', 1);
+
+ALTER SEQUENCE pessoa_id_seq RESTART WITH 7;
 
 
 INSERT INTO Tarefa (id, titulo, descricao, prazo, idDepartamento, duracao, idPessoa, finalizado)
@@ -31,7 +35,7 @@ INSERT INTO Tarefa (id, titulo, descricao, prazo, idDepartamento, duracao, idPes
 INSERT INTO Tarefa (id, titulo, descricao, prazo, idDepartamento, duracao, idPessoa, finalizado)
 	VALUES (1010, 'Validar NF Fevereiro', 'Validar notas fiscais recebidas no mês de Fevereiro', '20220315', 1, 14, 6, false);
 
-
+ALTER SEQUENCE tarefa_id_seq RESTART WITH 1011;
 	
 
 	

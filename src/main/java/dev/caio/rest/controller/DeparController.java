@@ -8,8 +8,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import dev.caio.commom.DeparMapper;
 import dev.caio.domain.model.Departamento;
 import dev.caio.domain.service.DeparService;
+import dev.caio.rest.output.DeparDTO;
 
 
 @Path("")
@@ -19,11 +21,13 @@ public class DeparController {
 	@Inject
 	DeparService serv;
 	
+	@Inject
+	DeparMapper mapper;
+	
 	@Path("get/departamentos")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Departamento> listDepar(){
-		System.out.println("entrou");
-		return Departamento.listAll(null);
+	public List<DeparDTO> listDepar(){
+		return mapper.toListResource(Departamento.listAll());
 	}
 }
